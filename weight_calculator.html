@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>حاسبة الوزن التقريبي</title>
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f3f3f3;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>حاسبة الوزن التقريبي من الطول ومحيط البطن</h2>
+  <input type="number" id="height" placeholder="الطول بالسنتيمتر">
+  <br>
+  <input type="number" id="waist" placeholder="محيط البطن بالسنتيمتر">
+  <br>
+  <button onclick="calculateWeight()">احسب الوزن</button>
+  <div id="result"></div>
+
+  <script>
+    function calculateWeight() {
+      const height = parseFloat(document.getElementById('height').value);
+      const waist = parseFloat(document.getElementById('waist').value);
+
+      if (isNaN(height) || isNaN(waist)) {
+        document.getElementById('result').innerText = "رجاءً أدخل القيم بشكل صحيح.";
+        return;
+      }
+
+      const weight = (height * waist) / 240;
+      document.getElementById('result').innerText = "الوزن التقريبي: " + weight.toFixed(1) + " كغم";
+    }
+  </script>
+</body>
+</html>
